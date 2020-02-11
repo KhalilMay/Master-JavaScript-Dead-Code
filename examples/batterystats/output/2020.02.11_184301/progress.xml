@@ -1,0 +1,31 @@
+<experiment>
+  <configHash>6c4e5bb479a6ab4cd638de913f4be2e4</configHash>
+  <outputDir>/home/khalil/Desktop/Master-Project/android-runner-master/examples/batterystats/output/2020.02.11_184301/</outputDir>
+  <runsToRun/>
+  <runsDone>
+    <run runId="0">
+      <device>j7duo</device>
+      <path>http://localhost:2020/apache.org/apache.org/0/</path>
+      <browser>chrome</browser>
+      <runCount>1</runCount>
+    </run>
+    <run runId="1">
+      <device>j7duo</device>
+      <path>http://localhost:2020/apache.org/apache.org/0/</path>
+      <browser>chrome</browser>
+      <runCount>2</runCount>
+    </run>
+    <run runId="2">
+      <device>j7duo</device>
+      <path>http://localhost:2020/aws.amazon.com/aws.amazon.com/0/</path>
+      <browser>chrome</browser>
+      <runCount>1</runCount>
+    </run>
+    <run runId="3">
+      <device>j7duo</device>
+      <path>http://localhost:2020/aws.amazon.com/aws.amazon.com/0/</path>
+      <browser>chrome</browser>
+      <runCount>2</runCount>
+    </run>
+  </runsDone>
+</experiment>
