@@ -117,7 +117,15 @@ class Batterystats(Profiler):
 
         return memory
 
-    def write_results(self, batterystats_results, systrace_results, energy_consumed_j, memory):
+    def get_cpu_usage(self,device):
+        #Collect cpu usage of chrome to execute the experiment run
+        cpu = device.shell('dumpsys cpuinfo | grep "TOTAL:"').split()[0].split("%")[0]
+        cpu = float(cpu)
+        print(cpu)
+
+        return cpu
+
+    def write_results(self, batterystats_results, systrace_results, energy_consumed_j, memory, cpu):
         with open(results_file, 'w+') as results:
             writer = csv.writer(results, delimiter="\n")
             writer.writerow(
@@ -129,6 +137,8 @@ class Batterystats(Profiler):
             out.write('Joule_calculated\n{}\n'.format(energy_consumed_j))
         with open(op.join(self.output_dir, 'Memory_{}'.format(results_file_name)), 'w+') as out:
             out.write('Memory_KByte_calculated\n{}\n'.format(memory))
+        with open(op.join(self.output_dir, 'CPU_{}'.format(results_file_name)), 'w+') as out:
+            out.write('CPU_Percentage_Usage\n{}\n'.format(cpu))
 
     def cleanup_logs(self):
         if self.cleanup is True:
@@ -141,9 +151,10 @@ class Batterystats(Profiler):
         self.pull_logcat(device)
         batterystats_results = self.get_batterystats_results(device)
         memory = self.get_memory_consumption(device)
+        cpu = self.get_cpu_usage(device)
         energy_consumed_j = self.get_consumed_joules(device)
         systrace_results = self.get_systrace_results(device)
-        self.write_results(batterystats_results, systrace_results, energy_consumed_j, memory)
+        self.write_results(batterystats_results, systrace_results, energy_consumed_j, memory, cpu)
         self.cleanup_logs()
 
     def set_output(self, output_dir):
@@ -160,9 +171,10 @@ class Batterystats(Profiler):
 
     def aggregate_subject(self):
         filename = os.path.join(self.output_dir, 'Aggregated.csv')
-        current_row = self.aggregate_battery_subject(self.output_dir, False, False)
-        current_row.update(self.aggregate_battery_subject(self.output_dir, True, False))
-        current_row.update(self.aggregate_battery_subject(self.output_dir, False, True))
+        current_row = self.aggregate_battery_subject(self.output_dir, False, False, False)
+        current_row.update(self.aggregate_battery_subject(self.output_dir, True, False, False))
+        current_row.update(self.aggregate_battery_subject(self.output_dir, False, True, False))
+        current_row.update(self.aggregate_battery_subject(self.output_dir, False, False, True))
         subject_rows = list()
         subject_rows.append(current_row)
         self.write_to_file(filename, subject_rows)
@@ -180,25 +192,23 @@ class Batterystats(Profiler):
             writer.writerows(rows)
 
     @staticmethod
-    def aggregate_battery_subject(logs_dir, joules, memory):
+    def aggregate_battery_subject(logs_dir, joules, memory, cpu):
         def add_row(accum, new):
             row = {k: v + float(new[k]) for k, v in accum.items() if k not in ['Component', 'count']}
             count = accum['count'] + 1
-            print(row)
             return dict(row, **{'count': count})
 
         # FIX
         runs = []
         runs_total = dict()
         for run_file in [f for f in os.listdir(logs_dir) if os.path.isfile(os.path.join(logs_dir, f))]:
-            if (('Joule' in run_file) and joules) or (('Memory' in run_file) and memory):
+            if (('Joule' in run_file) and joules) or (('Memory' in run_file) and memory) or (('CPU' in run_file) and cpu):
                 with open(os.path.join(logs_dir, run_file), 'rb') as run:
                     reader = csv.DictReader(run)
                     init = dict({fn: 0 for fn in reader.fieldnames if fn != 'datetime'}, **{'count': 0})
                     run_total = reduce(add_row, reader, init)
                     runs.append({k: v / run_total['count'] for k, v in run_total.items() if k != 'count'})
                 runs_total = reduce(lambda x, y: {k: v + y[k] for k, v in x.items()}, runs)
-                print(runs_total)
             #elif('Memory' in run_file) and memory:
                 #with open(os.path.join(logs_dir, run_file), 'rb') as run:
                     #reader = csv.DictReader(run)

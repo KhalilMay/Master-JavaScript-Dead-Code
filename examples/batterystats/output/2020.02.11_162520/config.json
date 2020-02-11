@@ -10,8 +10,8 @@
   "systrace_path": "/home/khalil/Android/Sdk/platform-tools/systrace/systrace.py",
   "powerprofile_path": "/home/khalil/Desktop/Master-Project/android-runner-master/examples/batterystats/Scripts/power_profile.xml",
   "paths": [
-    "http://localhost:2020/apache.org/apache.org/0/",
-    "http://localhost:2020/aws.amazon.com/aws.amazon.com/0/"
+    "http://localhost:2020/lvl0/angularjs_require/",
+    "http://localhost:2020/lvl0/backbone_require/"
   ],
   "profilers": {
     "batterystats": {
