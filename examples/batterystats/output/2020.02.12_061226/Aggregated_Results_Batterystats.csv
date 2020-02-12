@@ -1,0 +1,9 @@
+device,subject,browser,batterystats_Joule_calculated,batterystats_Memory_KByte_calculated,batterystats_CPU_Percentage_Usage
+j7duo,httplocalhost2020apacheorgapacheorg3,chrome,87.0789528,5709707.5,14.7
+j7duo,httplocalhost2020apacheorgapacheorg2,chrome,89.3308608,4169839.9,14.5
+j7duo,httplocalhost2020awsamazoncomawsamazoncom0,chrome,154.72937520000002,7253486.2,28.2
+j7duo,httplocalhost2020apacheorgapacheorg0,chrome,88.5698712,1083439.0,15.1
+j7duo,httplocalhost2020awsamazoncomawsamazoncom1,chrome,151.94943360000002,8803428.5,28.0
+j7duo,httplocalhost2020awsamazoncomawsamazoncom3,chrome,95.04604800000001,11898731.5,13.3
+j7duo,httplocalhost2020awsamazoncomawsamazoncom2,chrome,153.33163919999998,10353657.5,28.1
+j7duo,httplocalhost2020apacheorgapacheorg1,chrome,89.68806000000001,2629669.3,15.0
