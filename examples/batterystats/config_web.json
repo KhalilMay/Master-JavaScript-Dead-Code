@@ -14,9 +14,9 @@
     "http://localhost:2020/apache.org/apache.org/1/",
     "http://localhost:2020/apache.org/apache.org/2/",
     "http://localhost:2020/apache.org/apache.org/3/",
-    "http://localhost:2020/aws.amazon.com/aws.amazon.com/0/"
-    "http://localhost:2020/aws.amazon.com/aws.amazon.com/1/"
-    "http://localhost:2020/aws.amazon.com/aws.amazon.com/2/"
+    "http://localhost:2020/aws.amazon.com/aws.amazon.com/0/",
+    "http://localhost:2020/aws.amazon.com/aws.amazon.com/1/",
+    "http://localhost:2020/aws.amazon.com/aws.amazon.com/2/",
     "http://localhost:2020/aws.amazon.com/aws.amazon.com/3/"
   ],
   "profilers": {
