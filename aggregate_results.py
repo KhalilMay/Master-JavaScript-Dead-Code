@@ -139,7 +139,8 @@ if __name__ == '__main__':
             res1, res2, res3 = aggregate_subject(path, 9)
             level1_eng = level1_eng.append(pd.Series([CSS_Size] + list(res1), index=level1_eng.columns), ignore_index=True)
             level1_cpu = level1_cpu.append(pd.Series([CSS_Size] + list(res2), index=level1_cpu.columns), ignore_index=True)
-            level1_memory = level1_memory.append(pd.Series([CSS_Size] + list(res2), index=level1_memory.columns), ignore_index=True)
+            level1_memory = level1_memory.append(pd.Series([CSS_Size] + list(res3), index=level1_memory.columns), ignore_index=True)
+    
     
     level1_eng.to_csv('Aggregate_Metrics/level1_Results_Energy.csv', header=True, index=None)
     level1_cpu.to_csv('Aggregate_Metrics/level1_Results_CPU.csv', header=True, index=None)
@@ -154,7 +155,7 @@ if __name__ == '__main__':
             res1, res2, res3 = aggregate_subject(path, 9)
             level2_eng = level2_eng.append(pd.Series([CSS_Size] + list(res1), index=level2_eng.columns), ignore_index=True)
             level2_cpu = level2_cpu.append(pd.Series([CSS_Size] + list(res2), index=level2_cpu.columns), ignore_index=True)
-            level2_memory = level2_memory.append(pd.Series([CSS_Size] + list(res2), index=level2_memory.columns), ignore_index=True)
+            level2_memory = level2_memory.append(pd.Series([CSS_Size] + list(res3), index=level2_memory.columns), ignore_index=True)
     
     level2_eng.to_csv('Aggregate_Metrics/level2_Results_Energy.csv', header=True, index=None)
     level2_cpu.to_csv('Aggregate_Metrics/level2_Results_CPU.csv', header=True, index=None)
@@ -169,7 +170,7 @@ if __name__ == '__main__':
             res1, res2, res3 = aggregate_subject(path, 9)
             level3_eng = level3_eng.append(pd.Series([CSS_Size] + list(res1), index=level3_eng.columns), ignore_index=True)
             level3_cpu = level3_cpu.append(pd.Series([CSS_Size] + list(res2), index=level3_cpu.columns), ignore_index=True)
-            level3_memory = level3_memory.append(pd.Series([CSS_Size] + list(res2), index=level3_memory.columns), ignore_index=True)
+            level3_memory = level3_memory.append(pd.Series([CSS_Size] + list(res3), index=level3_memory.columns), ignore_index=True)
     
     level3_eng.to_csv('Aggregate_Metrics/level3_Results_Energy.csv', header=True, index=None)
     level3_cpu.to_csv('Aggregate_Metrics/level3_Results_CPU.csv', header=True, index=None)
