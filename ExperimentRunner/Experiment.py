@@ -168,7 +168,7 @@ class Experiment(object):
     def run(self, device, path, run, dummy):
         self.before_run(device, path, run)
         self.start_profiling(device, path, run)
-        self.interaction(device, path, run)
+        self.interaction(device, path, run, output_dir=paths.OUTPUT_DIR)
         self.stop_profiling(device, path, run)
         self.after_run(device, path, run)
 
@@ -196,7 +196,7 @@ class Experiment(object):
 
     def interaction(self, device, path, run, *args, **kwargs):
         """Interactions on the device to be profiled"""
-        self.scripts.run('interaction', device, *args, **kwargs)
+        self.scripts.run('interaction', device, path, *args, **kwargs)
 
     def stop_profiling(self, device, path, run, *args, **kwargs):
         self.profilers.stop_profiling(device)

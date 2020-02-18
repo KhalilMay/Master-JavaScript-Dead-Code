@@ -4,13 +4,13 @@
     "j7duo": {}
   },
   "replications": 1,
-  "duration": 20000,
+  "duration": 11000,
   "browsers": ["chrome"],
   "monkeyrunner_path": "/home/khalil/Android/Sdk/tools/bin/monkeyrunner",
   "systrace_path": "/home/khalil/Android/Sdk/platform-tools/systrace/systrace.py",
   "powerprofile_path": "/home/khalil/Desktop/Master-Project/android-runner-master/examples/batterystats/Scripts/power_profile.xml",
   "paths": [
-    "http://localhost:2020/aws.amazon.com/aws.amazon.com/2/"
+    "http://localhost:2020/aws.amazon.com/aws.amazon.com/0/"
   ],
   "profilers": {
     "batterystats": {

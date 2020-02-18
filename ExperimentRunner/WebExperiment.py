@@ -16,14 +16,14 @@ class WebExperiment(Experiment):
         self.duration = Tests.is_integer(config.get('duration', 0)) / 1000
 
     def run(self, device, path, run, browser_name):
-        browser = None
+        #browser = None
         for browserItem in self.browsers:
             if browser_name in browserItem.to_string():
                 browser = browserItem
         self.before_run(device, path, run, browser)
         self.after_launch(device, path, run, browser)
         self.start_profiling(device, path, run, browser)
-        self.interaction(device, path, run, browser)
+        self.interaction(device, path, run, browser,  output_dir=paths.OUTPUT_DIR)
         self.stop_profiling(device, path, run, browser)
         self.before_close(device, path, run, browser)
         self.after_run(device, path, run, browser)
