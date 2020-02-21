@@ -74,6 +74,7 @@ def aggregate_subject(subject, n_runs):
     joule_values = {}
     memory_values = {}
     cpu_values = {}
+    load_values = {}
 
     for item in os.listdir(subject):
         if item == '.DS_Store':
@@ -95,6 +96,9 @@ def aggregate_subject(subject, n_runs):
         elif 'Memory_results_' in item:
             df = pd.read_csv(subject + item)
             memory_values[date_time] = df['Memory_KByte_calculated'][0]
+        elif 'load_results_' in item:
+            df = pd.read_csv(subject + item)
+            load_values[date_time] = df['Load'][0]
     
     print(subject)
 
@@ -106,72 +110,90 @@ def aggregate_subject(subject, n_runs):
 
     ordered_memory_values = [memory_values[key] for key in sorted(memory_values.keys())]
     memory_serie = pd.Series([subject.split('/')[-4]] + ordered_memory_values + [np.mean(ordered_memory_values)])
-    return joule_serie, cpu_serie, memory_serie
+
+    ordered_load_values = [load_values[key] for key in sorted(load_values.keys())]
+    load_serie = pd.Series([subject.split('/')[-4]] + ordered_load_values + [np.mean(ordered_load_values)])
+
+    return joule_serie, cpu_serie, memory_serie, load_serie
 
 
 if __name__ == '__main__':
-    path = "examples/batterystats/output/2020.02.12_061226/data/j7duo/"
+    path = "examples/batterystats/output/2020.02.19_052149/data/j7duo/"
     level0_Sites, level1_Sites, level2_Sites, level3_Sites = explore_subjects(path)
     eng_headers = ['Optimization Levels', 'Website'] + ['Run {}'.format(x) for x in range(1, 11)] + ['Average']
     memory_headers =  ['Optimization Levels', 'Website'] + ['Run {}'.format(x) for x in range(1, 11)] + ['Average']
     cpu_headers = ['Optimization Levels', 'Website'] + ['Run {}'.format(x) for x in range(1, 11)] + ['Average']
+    load_headers = ['Optimization Levels', 'Website'] + ['Run {}'.format(x) for x in range(1, 11)] + ['Average']
     # Parse level0 results
     level0_eng = pd.DataFrame(columns=eng_headers)
     level0_memory = pd.DataFrame(columns=memory_headers)
     level0_cpu = pd.DataFrame(columns=cpu_headers)
+    level0_load = pd.DataFrame(columns=load_headers)
     for CSS_Size, contents in level0_Sites.items():
         for _, path in contents.items():
-            res1, res2, res3 = aggregate_subject(path, 9)
+            res1, res2, res3, res4 = aggregate_subject(path, 9)
             level0_eng = level0_eng.append(pd.Series([CSS_Size] + list(res1), index=level0_eng.columns), ignore_index=True)
             level0_cpu = level0_cpu.append(pd.Series([CSS_Size] + list(res2), index=level0_cpu.columns), ignore_index=True)
             level0_memory = level0_memory.append(pd.Series([CSS_Size] + list(res3), index=level0_memory.columns), ignore_index=True)
+            level0_load = level0_load.append(pd.Series([CSS_Size] + list(res4), index=level0_load.columns), ignore_index=True)
     
     level0_eng.to_csv('Aggregate_Metrics/level0_Results_Energy.csv', header=True, index=None)
     level0_cpu.to_csv('Aggregate_Metrics/level0_Results_CPU.csv', header=True, index=None)
     level0_memory.to_csv('Aggregate_Metrics/level0_Results_Memory.csv', header=True, index=None)
+    level0_load.to_csv('Aggregate_Metrics/level0_Results_Load.csv', header=True, index=None)
+
     
     # Parse level1
     level1_eng = pd.DataFrame(columns=eng_headers)
     level1_memory = pd.DataFrame(columns=memory_headers)
     level1_cpu = pd.DataFrame(columns=cpu_headers)
+    level1_load = pd.DataFrame(columns=load_headers)
     for CSS_Size, contents in level1_Sites.items():
         for _, path in contents.items():
-            res1, res2, res3 = aggregate_subject(path, 9)
+            res1, res2, res3, res4 = aggregate_subject(path, 9)
             level1_eng = level1_eng.append(pd.Series([CSS_Size] + list(res1), index=level1_eng.columns), ignore_index=True)
             level1_cpu = level1_cpu.append(pd.Series([CSS_Size] + list(res2), index=level1_cpu.columns), ignore_index=True)
             level1_memory = level1_memory.append(pd.Series([CSS_Size] + list(res3), index=level1_memory.columns), ignore_index=True)
+            level1_load = level1_load.append(pd.Series([CSS_Size] + list(res4), index=level1_load.columns), ignore_index=True)
     
     
     level1_eng.to_csv('Aggregate_Metrics/level1_Results_Energy.csv', header=True, index=None)
     level1_cpu.to_csv('Aggregate_Metrics/level1_Results_CPU.csv', header=True, index=None)
     level1_memory.to_csv('Aggregate_Metrics/level1_Results_Memory.csv', header=True, index=None)
+    level1_load.to_csv('Aggregate_Metrics/level1_Results_Load.csv', header=True, index=None)
 
     # Parse level2
     level2_eng = pd.DataFrame(columns=eng_headers)
     level2_memory = pd.DataFrame(columns=memory_headers)
     level2_cpu = pd.DataFrame(columns=cpu_headers)
+    level2_load = pd.DataFrame(columns=load_headers)
     for CSS_Size, contents in level2_Sites.items():
         for _, path in contents.items():
-            res1, res2, res3 = aggregate_subject(path, 9)
+            res1, res2, res3, res4 = aggregate_subject(path, 9)
             level2_eng = level2_eng.append(pd.Series([CSS_Size] + list(res1), index=level2_eng.columns), ignore_index=True)
             level2_cpu = level2_cpu.append(pd.Series([CSS_Size] + list(res2), index=level2_cpu.columns), ignore_index=True)
             level2_memory = level2_memory.append(pd.Series([CSS_Size] + list(res3), index=level2_memory.columns), ignore_index=True)
+            level2_load = level2_load.append(pd.Series([CSS_Size] + list(res4), index=level2_load.columns), ignore_index=True)
     
     level2_eng.to_csv('Aggregate_Metrics/level2_Results_Energy.csv', header=True, index=None)
     level2_cpu.to_csv('Aggregate_Metrics/level2_Results_CPU.csv', header=True, index=None)
     level2_memory.to_csv('Aggregate_Metrics/level2_Results_Memory.csv', header=True, index=None)
+    level2_load.to_csv('Aggregate_Metrics/level2_Results_Load.csv', header=True, index=None)
 
     # Parse level3
     level3_eng = pd.DataFrame(columns=eng_headers)
     level3_memory = pd.DataFrame(columns=memory_headers)
     level3_cpu = pd.DataFrame(columns=cpu_headers)
+    level3_load = pd.DataFrame(columns=load_headers)
     for CSS_Size, contents in level3_Sites.items():
         for _, path in contents.items():
-            res1, res2, res3 = aggregate_subject(path, 9)
+            res1, res2, res3, res4 = aggregate_subject(path, 9)
             level3_eng = level3_eng.append(pd.Series([CSS_Size] + list(res1), index=level3_eng.columns), ignore_index=True)
             level3_cpu = level3_cpu.append(pd.Series([CSS_Size] + list(res2), index=level3_cpu.columns), ignore_index=True)
             level3_memory = level3_memory.append(pd.Series([CSS_Size] + list(res3), index=level3_memory.columns), ignore_index=True)
+            level3_load = level3_load.append(pd.Series([CSS_Size] + list(res4), index=level3_load.columns), ignore_index=True)
     
     level3_eng.to_csv('Aggregate_Metrics/level3_Results_Energy.csv', header=True, index=None)
     level3_cpu.to_csv('Aggregate_Metrics/level3_Results_CPU.csv', header=True, index=None)
     level3_memory.to_csv('Aggregate_Metrics/level3_Results_Memory.csv', header=True, index=None)
+    level3_load.to_csv('Aggregate_Metrics/level3_Results_Load.csv', header=True, index=None)
