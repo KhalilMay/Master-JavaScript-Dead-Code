@@ -16,7 +16,7 @@ class WebExperiment(Experiment):
         self.duration = Tests.is_integer(config.get('duration', 0)) / 1000
 
     def run(self, device, path, run, browser_name):
-        #browser = None
+        browser = None
         for browserItem in self.browsers:
             if browser_name in browserItem.to_string():
                 browser = browserItem
@@ -53,11 +53,11 @@ class WebExperiment(Experiment):
     def interaction(self, device, path, run, *args, **kwargs):
         browser = args[0]
         browser.load_url(device, path)
-        time.sleep(5)
+        time.sleep(20)
         super(WebExperiment, self).interaction(device, path, run, *args, **kwargs)
 
         # TODO: Fix web experiments running longer than self.duration
-        time.sleep(self.duration)
+        #time.sleep(self.duration)
 
     def after_run(self, device, path, run, *args, **kwargs):
         browser = args[0]
