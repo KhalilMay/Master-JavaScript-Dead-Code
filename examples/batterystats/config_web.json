@@ -4,6 +4,7 @@
     "j7duo": {}
   },
   "replications": 2,
+  "randomization": true,
   "duration": 60000,
   "browsers": ["chrome"],
   "monkeyrunner_path": "/home/khalil/Android/Sdk/tools/bin/monkeyrunner",
