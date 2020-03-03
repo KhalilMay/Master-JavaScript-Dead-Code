@@ -1,0 +1,2 @@
+device,subject,browser,batterystats_Joule_calculated,batterystats_Memory_KByte_calculated,batterystats_CPU_Percentage_Usage
+j7duo,http-localhost-2020-apache-org-apache-org-0,chrome,87.68943,1514828.5,11.5
