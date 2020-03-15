@@ -87,7 +87,8 @@
   ],
   "profilers": {
     "batterystats": {
-      "cleanup": true
+      "cleanup": true,
+      "enable_systrace_parsing": false
     }
   },
   "scripts": {
