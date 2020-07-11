@@ -1,0 +1,75 @@
+{
+  "type": "web",
+  "devices": {
+    "j7duo": {}
+  },
+  "replications": 8,
+  "randomization": true,
+  "duration": 60000,
+  "browsers": ["chrome"],
+  "monkeyrunner_path": "/home/khalil/Android/Sdk/tools/bin/monkeyrunner",
+  "systrace_path": "/home/khalil/Android/Sdk/platform-tools/systrace/systrace.py",
+  "powerprofile_path": "/home/khalil/Desktop/Master-Project/android-runner-master/examples/batterystats/Scripts/power_profile.xml",
+  "paths": [
+    "http://192.168.178.178:2020/lacunaWebPages/apache.org/apache.org/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/apache.org/apache.org/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/aws.amazon.com/aws.amazon.com/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/aws.amazon.com/aws.amazon.com/1/",
+    "http://192.168.178.178:2020/lacunaWebPages/aws.amazon.com/aws.amazon.com/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/aws.amazon.com/aws.amazon.com/3/",
+    "http://192.168.178.178:2020/lacunaWebPages/m.youtube.com/m.youtube.com/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/m.youtube.com/m.youtube.com/1/",
+    "http://192.168.178.178:2020/lacunaWebPages/m.youtube.com/m.youtube.com/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/m.youtube.com/m.youtube.com/3/",
+    "http://192.168.178.178:2020/lacunaWebPages/nl.godaddy.com/nl.godaddy.com/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/nl.godaddy.com/nl.godaddy.com/1/",
+    "http://192.168.178.178:2020/lacunaWebPages/nl.godaddy.com/nl.godaddy.com/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/nl.godaddy.com/nl.godaddy.com/3/",
+    "http://192.168.178.178:2020/lacunaWebPages/stackexchange.com/stackexchange.com/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/stackexchange.com/stackexchange.com/1/",
+    "http://192.168.178.178:2020/lacunaWebPages/stackexchange.com/stackexchange.com/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/stackexchange.com/stackexchange.com/3/",
+    "http://192.168.178.178:2020/lacunaWebPages/stackoverflow.com/stackoverflow.com/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/stackoverflow.com/stackoverflow.com/1/",
+    "http://192.168.178.178:2020/lacunaWebPages/stackoverflow.com/stackoverflow.com/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/stackoverflow.com/stackoverflow.com/3/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.amazon.com/www.amazon.com/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.amazon.com/www.amazon.com/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.amazon.com/www.amazon.com/3/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.amazon.in/www.amazon.in/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.amazon.in/www.amazon.in/1/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.amazon.in/www.amazon.in/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.amazon.in/www.amazon.in/3/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.bbc.com/www.bbc.com/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.bbc.com/www.bbc.com/1/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.bbc.com/www.bbc.com/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.bbc.com/www.bbc.com/3/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.booking.com/www.booking.com/0/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.booking.com/www.booking.com/1/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.booking.com/www.booking.com/2/",
+    "http://192.168.178.178:2020/lacunaWebPages/www.booking.com/www.booking.com/3/"
+  ],
+  "profilers": {
+    "batterystats": {
+      "cleanup": true,
+      "enable_systrace_parsing": false
+    }
+  },
+  "scripts": {
+    "before_experiment": "Scripts/before_experiment.py",
+    "before_run": "Scripts/before_run.py",
+    "after_launch": "Scripts/after_launch.py",
+    "interaction": [
+      {
+        "type": "python3",
+        "path": "Scripts/interaction.py",
+        "timeout": 30000,
+        "logcat_regex": "Lacuna"
+      }
+    ],
+    "before_close": "Scripts/before_close.py",
+    "after_run": "Scripts/after_run.py",
+    "after_experiment": "Scripts/after_experiment.py"
+  },
+  "time_between_run": 120000
+}
