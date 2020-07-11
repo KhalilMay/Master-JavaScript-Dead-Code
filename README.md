@@ -20,7 +20,7 @@ For LacunaV2 the installation are present in the the `node_modules` directory, o
 ## Setup
 Some commands will overwrite the current available files and folders. Check if the steps are already made before executing the following commands.
 
-### Create the three additional variants for each subject
+### Create the three additional variants for each web page subject
 The `subjects` directory includes all variants of 20 subjects, and `lacunaWebPages` directory includes all variants of the other 16 subjects. The command below is already excuted for all optimization levels of lacunaV2. 
 
 ```bash
@@ -28,7 +28,7 @@ The `subjects` directory includes all variants of 20 subjects, and `lacunaWebPag
 node LacunaV2-master/lacuna ./subjects/lvl0/angularjs_require -a tajs dynamic -o 2 -d ./subjects/lvl2/angularjs_require -f
 ```
 
-### Add Javascript snippet to each website
+### Add Javascript snippet to each web page subject
 This command is executed for all variants of the subjects in `lacunaWebPage` and `subjects` directory
 
 ```bash
