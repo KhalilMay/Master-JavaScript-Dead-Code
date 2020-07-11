@@ -1,6 +1,0 @@
-node_modules
-example
-exceptions.log
-package-lock.json
-analyzers/ACG/javascript-call-graph
-analyzers/npm_cg/callgraph
