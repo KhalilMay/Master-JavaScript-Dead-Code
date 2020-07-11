@@ -9,7 +9,7 @@
   "browsers": ["chrome"],
   "monkeyrunner_path": "/home/user/Android/Sdk/tools/bin/monkeyrunner",
   "systrace_path": "/home/user/Android/Sdk/platform-tools/systrace/systrace.py",
-  "powerprofile_path": "/home/user/Desktop/Master-Project/android-runner-master/examples/batterystats/Scripts/power_profile.xml",
+  "powerprofile_path": "power_profile.xml",
   "paths": [
     "http://localhost:2020/lacunaWebPages/apache.org/apache.org/0/",
     "http://localhost:2020/lacunaWebPages/apache.org/apache.org/1/",
