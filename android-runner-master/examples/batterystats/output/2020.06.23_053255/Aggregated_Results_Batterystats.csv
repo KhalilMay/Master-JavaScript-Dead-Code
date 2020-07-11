@@ -1,7 +1,0 @@
-device,subject,browser,batterystats_Joule_calculated,batterystats_Memory_KByte_calculated,batterystats_CPU_Percentage_Usage
-j7duo,http-192-168-178-178-2020-subjects-lvl2-exoskeleton,chrome,93.273903,11157680.75,9.59
-j7duo,http-192-168-178-178-2020-subjects-lvl1-mithril,chrome,93.07972799999999,12412255.25,9.74
-j7duo,http-192-168-178-178-2020-subjects-lvl1-exoskeleton,chrome,96.82342200000002,11401594.9,10.26
-j7duo,http-192-168-178-178-2020-subjects-lvl0-exoskeleton,chrome,96.225363,13161799.45,9.95
-j7duo,http-192-168-178-178-2020-subjects-lvl0-mithril,chrome,95.44089600000001,11310106.95,10.225
-j7duo,http-192-168-178-178-2020-subjects-lvl3-exoskeleton,chrome,97.37487899999998,15458485.3,9.985000000000001
