@@ -49,9 +49,9 @@ To be able to access the localhost websites on the mobile device:
 adb reverse tcp:2020 tcp:2020
 ```
 
-To collect details of the packets transferred for each run of each subject, execute the command below as well as adding a proxy to network that the mobile device used for this experiment is connected to. Make sure that the port used for the proxy in the mobile device is the same as the one used in the command below
+To collect details of the packets transferred for each run of each subject, execute the command below as well as adding a proxy to the network that the mobile device used for this experiment is connected to. Make sure that the port used for the proxy in the mobile device is the same as the one used in the command below
 ```bash
-# run mitmproxy on port 8080 and save the flow file in a text file called flowFileName
+# run mitmproxy on port 8080 and save the flow file in a text file such as flowFileName
 mitmproxy -p 8080 --set save_stream_file=flowFileName
 ```
 
@@ -69,14 +69,14 @@ python3 android-runner-master path/to/config
 ```
 
 ## Aggregate Metrics Results
-To be able to analyze the results of the metrics collected. we need to aggregate the results for each variant of each metric into a seperate csv file. The command below aggregates the results of batterystats metrics present within the `/android-runner-master/examples/batterystats/output/` directory
+To be able to analyze the results of the metrics collected. we need to aggregate the results for each variant of each metric into a seperate csv file. The command below aggregates the results of batterystats metrics placed within the `/android-runner-master/examples/batterystats/output/` directory
 
 ```bash
 # aggregate energy consumption, memory consumption, cpu usage within the given directory
 python aggregate_results.py path/to/batterystatsOutput
 ```
 
-The command below aggregates the results for the loading time and perfumejs metrics placed  with the `output` directory
+The command below aggregates the results for the loading time and perfumejs metrics placed within the `output` directory
 
 ```bash
 # aggregate Loading time, starting time, fp, fcp within the given directory
@@ -91,7 +91,8 @@ To aggregate the mitmproxy results, first we need to convert the flow text file(
 python logfileToCSV.py flowFileName flowFileName.csv
 ```
 
-Now, to aggregate the mitmproxy results make sure that the loading time and perfumejs metrics is aggregated first. The reason for this is because aggregating mitmproxy results uses the starting time of each run which is aggregated with the loading and perfumejs metrics in directory `Aggregate_Metrics2`. The command below aggregates the mitmproxy results presents within a directory with ONLY the CSV flow files such as `mitmproxyResults/CSVFiles` and given the directory `Aggregate_Metrics2` with the starting time aggregated.
+Now, to aggregate the mitmproxy results make sure that the loading time and perfumejs metrics are aggregated first. The reason for this is because aggregating mitmproxy results uses the starting time of each run which is aggregated with the loading and perfumejs metrics in directory `Aggregate_Metrics2`. 
+The command below aggregates the mitmproxy results presents within a directory with ONLY the CSV flow files such as `mitmproxyResults/CSVFiles` and given the directory `Aggregate_Metrics2` with the starting time aggregated.
 
 ```bash
 # aggregate packets transferred and bytes transferred within the given CSVFiles directory and the aggregated starting time directory
