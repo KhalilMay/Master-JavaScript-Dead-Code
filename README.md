@@ -92,6 +92,7 @@ python logfileToCSV.py flowFileName flowFileName.csv
 ```
 
 Now, to aggregate the mitmproxy results make sure that the loading time and perfumejs metrics are aggregated first. The reason for this is because aggregating mitmproxy results uses the starting time of each run which is aggregated with the loading and perfumejs metrics in directory `Aggregate_Metrics2`. 
+
 The command below aggregates the mitmproxy results presents within a directory with ONLY the CSV flow files such as `mitmproxyResults/CSVFiles` and given the directory `Aggregate_Metrics2` with the starting time aggregated.
 
 ```bash
