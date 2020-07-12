@@ -45,12 +45,11 @@ plot(resultEnergy, 1)#Residual vs Fitted plot to check if the variance is homoge
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
 shapiro.test(residuals(object = resultEnergy)) #normality variance check
 
-
-#bartlett.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)#homogenous variance check
-
 kruskal.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #nonparamatric test instead of anova
 
 leveneTest(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #homogenous variance check
+
+pairwise.t.test(experimentEnergy$EnergyAll , experimentEnergy$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
 #---------------------------------------------------------------------------------------------------
 
 #Data for Loading Times of the experiments
@@ -92,11 +91,11 @@ plot(resultLoading,2)
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
 shapiro.test(residuals(object = resultLoading)) #normality variance check
 
-#bartlett.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)#homogenous variance check
-
 kruskal.test(experimentLoading$LoadingAll~experimentLoading$Optimization.Level) #nonparamatric test instead of anova
 
 leveneTest(experimentLoading$LoadingAll~experimentLoading$Optimization.Level) #homogenous variance check
+
+pairwise.t.test(experimentLoading$LoadingAll , experimentLoading$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
 
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -132,13 +131,13 @@ plot(resultCPU,1)
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
 shapiro.test(residuals(object = resultCPU)) #normality variance check
 
-#bartlett.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)#homogenous variance check
-
 kruskal.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
 leveneTest(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #homogenous variance check
 
 oneway.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #Used if variance is not homogenous
+
+pairwise.t.test(experimentCPU$CPUAll , experimentCPU$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for Memory of the experiments
@@ -173,13 +172,11 @@ plot(resultMemory,2)
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
 shapiro.test(residuals(object = resultMemory)) #normality variance check
 
-#bartlett.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)#homogenous variance check
-
 kruskal.test(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
 leveneTest(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #homogenous variance check
 
-#oneway.test(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #Used if variance is not homogenous
+pairwise.t.test(experimentMemory$MemoryAll , experimentMemory$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
 
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -212,17 +209,15 @@ summary(resultFP)
 plot(resultFP,1)
 plot(resultFP,2)
 
+
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
 shapiro.test(residuals(object = resultFP)) #normality variance check
-
-#bartlett.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)#homogenous variance check
 
 kruskal.test(experimentFP$FPAll~experimentFP$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
 leveneTest(experimentFP$FPAll~experimentFP$Optimization.Level) #homogenous variance check
 
-#oneway.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #Used if variance is not homogenous
-
+pairwise.t.test(experimentFP$FPAll , experimentFP$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for FCP of the experiments
@@ -257,14 +252,11 @@ plot(resultFCP,2)
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
 shapiro.test(residuals(object = resultFCP)) #normality variance check
 
-#bartlett.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)#homogenous variance check
-
 kruskal.test(experimentFCP$FCPAll~experimentFCP$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
 leveneTest(experimentFCP$FCPAll~experimentFCP$Optimization.Level) #homogenous variance check
 
-#oneway.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #Used if variance is not homogenous
-
+pairwise.t.test(experimentFCP$FCPAll , experimentFCP$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for Packets of the experiments
@@ -299,14 +291,11 @@ plot(resultPackets,2)
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
 shapiro.test(residuals(object = resultPackets)) #normality variance check
 
-#bartlett.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)#homogenous variance check
-
 kruskal.test(experimentPackets$PacketsAll~experimentPackets$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
 leveneTest(experimentPackets$PacketsAll~experimentPackets$Optimization.Level) #homogenous variance check
 
-#oneway.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #Used if variance is not homogenous
-
+pairwise.t.test(experimentPackets$PacketsAll , experimentPackets$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for Bytes transferred of the experiments
@@ -341,10 +330,10 @@ plot(resultBytes,2)
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
 shapiro.test(residuals(object = resultBytes)) #normality variance check
 
-#bartlett.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)#homogenous variance check
-
 kruskal.test(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
 leveneTest(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #homogenous variance check
 
 oneway.test(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #Used if variance is not homogenous
+
+pairwise.t.test(experimentBytes$BytesAll , experimentBytes$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
