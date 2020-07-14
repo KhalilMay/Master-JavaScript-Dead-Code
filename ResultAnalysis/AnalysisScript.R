@@ -49,7 +49,7 @@ kruskal.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #no
 
 leveneTest(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #homogenous variance check
 
-pairwise.t.test(experimentEnergy$EnergyAll , experimentEnergy$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
+pairwise.wilcox.test(experimentEnergy$EnergyAll , experimentEnergy$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #---------------------------------------------------------------------------------------------------
 
 #Data for Loading Times of the experiments
@@ -95,7 +95,7 @@ kruskal.test(experimentLoading$LoadingAll~experimentLoading$Optimization.Level) 
 
 leveneTest(experimentLoading$LoadingAll~experimentLoading$Optimization.Level) #homogenous variance check
 
-pairwise.t.test(experimentLoading$LoadingAll , experimentLoading$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
+pairwise.wilcox.test(experimentLoading$LoadingAll , experimentLoading$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -137,7 +137,7 @@ leveneTest(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #homogenous va
 
 oneway.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #Used if variance is not homogenous
 
-pairwise.t.test(experimentCPU$CPUAll , experimentCPU$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
+pairwise.wilcox.test(experimentCPU$CPUAll , experimentCPU$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for Memory of the experiments
@@ -176,7 +176,7 @@ kruskal.test(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #no
 
 leveneTest(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #homogenous variance check
 
-pairwise.t.test(experimentMemory$MemoryAll , experimentMemory$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
+pairwise.wilcox.test(experimentMemory$MemoryAll , experimentMemory$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -217,7 +217,7 @@ kruskal.test(experimentFP$FPAll~experimentFP$Optimization.Level) #nonparamatric 
 
 leveneTest(experimentFP$FPAll~experimentFP$Optimization.Level) #homogenous variance check
 
-pairwise.t.test(experimentFP$FPAll , experimentFP$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
+pairwise.wilcox.test(experimentFP$FPAll , experimentFP$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for FCP of the experiments
@@ -256,7 +256,7 @@ kruskal.test(experimentFCP$FCPAll~experimentFCP$Optimization.Level) #nonparamatr
 
 leveneTest(experimentFCP$FCPAll~experimentFCP$Optimization.Level) #homogenous variance check
 
-pairwise.t.test(experimentFCP$FCPAll , experimentFCP$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
+pairwise.wilcox.test(experimentFCP$FCPAll , experimentFCP$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for Packets of the experiments
@@ -295,7 +295,7 @@ kruskal.test(experimentPackets$PacketsAll~experimentPackets$Optimization.Level) 
 
 leveneTest(experimentPackets$PacketsAll~experimentPackets$Optimization.Level) #homogenous variance check
 
-pairwise.t.test(experimentPackets$PacketsAll , experimentPackets$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
+pairwise.wilcox.test(experimentPackets$PacketsAll , experimentPackets$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for Bytes transferred of the experiments
@@ -336,4 +336,4 @@ leveneTest(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #homogen
 
 oneway.test(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #Used if variance is not homogenous
 
-pairwise.t.test(experimentBytes$BytesAll , experimentBytes$Optimization.Level, p.adjust.method = "BH")#pairwise comparision to check the mean difference between the groups
+pairwise.wilcox.test(experimentBytes$BytesAll , experimentBytes$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
