@@ -1,5 +1,5 @@
 library(vioplot) # may need installation first
-
+library(goeveg) #may need installation first
 #Data for Energy Consumption of the experiments
 level0Energy = read.csv(file="../Aggregate_Metrics/level0_Results_Energy.csv", header=TRUE, sep=",")
 level1Energy = read.csv(file="../Aggregate_Metrics/level1_Results_Energy.csv", header=TRUE, sep=",")
@@ -21,7 +21,37 @@ level3EnergyAllRuns <- c(level3Energy$Run.1, level3Energy$Run.2, level3Energy$Ru
 #vioplot for all runs of enegry for all treatments
 energyData = vioplot(level0EnergyAllRuns, level1EnergyAllRuns, level2EnergyAllRuns, level3EnergyAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "Energy Consumption (Joules)", main = "Vioplot for the energy consumption of all runs of each treatment")
 
-energyData
+energyData # includes the median of energy for all OL
+
+#find minimum and maxium of energy for each OL
+min(level0EnergyAllRuns)
+min(level1EnergyAllRuns)
+min(level2EnergyAllRuns)
+min(level3EnergyAllRuns)
+
+max(level0EnergyAllRuns)
+max(level1EnergyAllRuns)
+max(level2EnergyAllRuns)
+max(level3EnergyAllRuns)
+
+#average of energy for each OL
+mean(level0EnergyAllRuns)
+mean(level1EnergyAllRuns)
+mean(level2EnergyAllRuns)
+mean(level3EnergyAllRuns)
+
+#standard deviation of energy for each OL
+sd(level0EnergyAllRuns)
+sd(level1EnergyAllRuns)
+sd(level2EnergyAllRuns)
+sd(level3EnergyAllRuns)
+
+#Coefficient of variation of energy of each OL
+cv(level0EnergyAllRuns)
+cv(level1EnergyAllRuns)
+cv(level2EnergyAllRuns)
+cv(level3EnergyAllRuns)
+
 #-----------------------------------------------------------------------------------------------------------------------
 
 #Data for Loading Time of the experiments
@@ -42,9 +72,38 @@ level3LoadingAllRuns <- c(level3Loading$Run.1, level3Loading$Run.2, level3Loadin
 
 
 #vioplot for total average of loading time for all treatments
-vioplot(level0LoadingAllRuns, level1LoadingAllRuns, level2LoadingAllRuns, level3LoadingAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "Load Time Values(ms)", main = "Vioplot for the Loading Time of all runs of each treatment")
+loadData = vioplot(level0LoadingAllRuns, level1LoadingAllRuns, level2LoadingAllRuns, level3LoadingAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "Load Time Values(ms)", main = "Vioplot for the Loading Time of all runs of each treatment")
 
+loadData # includes the median of loading for each OL
 
+#find minimum and maxium of loading for each OL
+min(level0LoadingAllRuns)
+min(level1LoadingAllRuns)
+min(level2LoadingAllRuns)
+min(level3LoadingAllRuns)
+
+max(level0LoadingAllRuns)
+max(level1LoadingAllRuns)
+max(level2LoadingAllRuns)
+max(level3LoadingAllRuns)
+
+#average of loading for each OL
+mean(level0LoadingAllRuns)
+mean(level1LoadingAllRuns)
+mean(level2LoadingAllRuns)
+mean(level3LoadingAllRuns)
+
+#standard deviation of loading for each OL
+sd(level0LoadingAllRuns)
+sd(level1LoadingAllRuns)
+sd(level2LoadingAllRuns)
+sd(level3LoadingAllRuns)
+
+#Coefficient of variation of loading of each OL
+cv(level0LoadingAllRuns)
+cv(level1LoadingAllRuns)
+cv(level2LoadingAllRuns)
+cv(level3LoadingAllRuns)
 #------------------------------------------------------------------------------------------------------------------------
 
 #Data for CPU of the experiments
@@ -67,7 +126,36 @@ level3CPUAllRuns <- c(level3CPU$Run.1, level3CPU$Run.2, level3CPU$Run.3, level3C
 #vioplot for total average of cpu usage for all treatments
 cpuData= vioplot(level0CPUAllRuns, level1CPUAllRuns, level2CPUAllRuns, level3CPUAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "CPU Usage(%)", main = "Vioplot for the CPU Usage of all runs of each treatment")
 
-cpuData
+cpuData# includes the median of CPU for all OL
+
+#find minimum and maxium of cpu for each OL
+min(level0CPUAllRuns)
+min(level1CPUAllRuns)
+min(level2CPUAllRuns)
+min(level3CPUAllRuns)
+
+max(level0CPUAllRuns)
+max(level1CPUAllRuns)
+max(level2CPUAllRuns)
+max(level3CPUAllRuns)
+
+#average of cpu for each OL
+mean(level0CPUAllRuns)
+mean(level1CPUAllRuns)
+mean(level2CPUAllRuns)
+mean(level3CPUAllRuns)
+
+#standard deviation of cpu for each OL
+sd(level0CPUAllRuns)
+sd(level1CPUAllRuns)
+sd(level2CPUAllRuns)
+sd(level3CPUAllRuns)
+
+#Coefficient of variation of cpu of each OL
+cv(level0CPUAllRuns)
+cv(level1CPUAllRuns)
+cv(level2CPUAllRuns)
+cv(level3CPUAllRuns)
 #-------------------------------------------------------------------------------------------------------------------------------
 
 #Data for Memory of the experiments
@@ -89,10 +177,39 @@ level3MemoryAllRuns <- c(level3Memory$Run.1, level3Memory$Run.2, level3Memory$Ru
 
 
 #vioplot for total average of memory consumption for all treatments
-vioplot(level0MemoryAllRuns/1024, level1MemoryAllRuns/1024, level2MemoryAllRuns/1024, level3MemoryAllRuns/1024, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "Memory Consumption(MB)", main = "Vioplot for the Memory consumption of all runs of each treatment")
+memData = vioplot(level0MemoryAllRuns/1024, level1MemoryAllRuns/1024, level2MemoryAllRuns/1024, level3MemoryAllRuns/1024, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "Memory Consumption(MB)", main = "Vioplot for the Memory consumption of all runs of each treatment")
 
 
+memData # includes the median of memory for all OL
 
+#find minimum and maxium of memory for each OL
+min(level0MemoryAllRuns/1024)
+min(level1MemoryAllRuns/1024)
+min(level2MemoryAllRuns/1024)
+min(level3MemoryAllRuns/1024)
+
+max(level0MemoryAllRuns/1024)
+max(level1MemoryAllRuns/1024)
+max(level2MemoryAllRuns/1024)
+max(level3MemoryAllRuns/1024)
+
+#average of memory for each OL
+mean(level0MemoryAllRuns/1024)
+mean(level1MemoryAllRuns/1024)
+mean(level2MemoryAllRuns/1024)
+mean(level3MemoryAllRuns/1024)
+
+#standard deviation of memory for each OL
+sd(level0MemoryAllRuns/1024)
+sd(level1MemoryAllRuns/1024)
+sd(level2MemoryAllRuns/1024)
+sd(level3MemoryAllRuns/1024)
+
+#Coefficient of variation of memory of each OL
+cv(level0MemoryAllRuns/1024)
+cv(level1MemoryAllRuns/1024)
+cv(level2MemoryAllRuns/1024)
+cv(level3MemoryAllRuns/1024)
 
 #-----------------------
 
@@ -114,7 +231,38 @@ level3FPAllRuns <- c(level3FP$Run.1, level3FP$Run.2, level3FP$Run.3, level3FP$Ru
 
 
 #vioplot for total average of FP time for all treatments
-vioplot(level0FPAllRuns, level1FPAllRuns, level2FPAllRuns, level3FPAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "FP Values(ms)", main = "Vioplot for the FP of all runs of each treatment")
+FPData = vioplot(level0FPAllRuns, level1FPAllRuns, level2FPAllRuns, level3FPAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "FP Values(ms)", main = "Vioplot for the FP of all runs of each treatment")
+
+FPData #includes median of FP for all OL
+
+#find minimum and maxium of fp for each OL
+min(level0FPAllRuns)
+min(level1FPAllRuns)
+min(level2FPAllRuns)
+min(level3FPAllRuns)
+
+max(level0FPAllRuns)
+max(level1FPAllRuns)
+max(level2FPAllRuns)
+max(level3FPAllRuns)
+
+#average of fp for each OL
+mean(level0FPAllRuns)
+mean(level1FPAllRuns)
+mean(level2FPAllRuns)
+mean(level3FPAllRuns)
+
+#standard deviation of fp for each OL
+sd(level0FPAllRuns)
+sd(level1FPAllRuns)
+sd(level2FPAllRuns)
+sd(level3FPAllRuns)
+
+#Coefficient of variation of fp of each OL
+cv(level0FPAllRuns)
+cv(level1FPAllRuns)
+cv(level2FPAllRuns)
+cv(level3FPAllRuns)
 
 #-----------------------
 
@@ -136,7 +284,38 @@ level3FCPAllRuns <- c(level3FCP$Run.1, level3FCP$Run.2, level3FCP$Run.3, level3F
 
 
 #vioplot for total average of FCP time for all treatments
-vioplot(level0FCPAllRuns, level1FCPAllRuns, level2FCPAllRuns, level3FCPAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "FCP Values(ms)", main = "Vioplot for the FCP of all runs of each treatment")
+fcpData = vioplot(level0FCPAllRuns, level1FCPAllRuns, level2FCPAllRuns, level3FCPAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "FCP Values(ms)", main = "Vioplot for the FCP of all runs of each treatment")
+
+fcpData #includes median of fcp for all OL
+
+#find minimum and maxium of fcp for each OL
+min(level0FCPAllRuns)
+min(level1FCPAllRuns)
+min(level2FCPAllRuns)
+min(level3FCPAllRuns)
+
+max(level0FCPAllRuns)
+max(level1FCPAllRuns)
+max(level2FCPAllRuns)
+max(level3FCPAllRuns)
+
+#average of fcp for each OL
+mean(level0FCPAllRuns)
+mean(level1FCPAllRuns)
+mean(level2FCPAllRuns)
+mean(level3FCPAllRuns)
+
+#standard deviation of fcp for each OL
+sd(level0FCPAllRuns)
+sd(level1FCPAllRuns)
+sd(level2FCPAllRuns)
+sd(level3FCPAllRuns)
+
+#Coefficient of variation of fcp of each OL
+cv(level0FCPAllRuns)
+cv(level1FCPAllRuns)
+cv(level2FCPAllRuns)
+cv(level3FCPAllRuns)
 
 #-----------------------
 
@@ -158,7 +337,38 @@ level3PacketsAllRuns <- c(level3Packets$Run.1, level3Packets$Run.2, level3Packet
 
 
 #vioplot for total average of Packets time for all treatments
-vioplot(level0PacketsAllRuns, level1PacketsAllRuns, level2PacketsAllRuns, level3PacketsAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "Number of Packets", main = "Vioplot for the Packets of all runs of each treatment")
+packetData = vioplot(level0PacketsAllRuns, level1PacketsAllRuns, level2PacketsAllRuns, level3PacketsAllRuns, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "Number of Packets", main = "Vioplot for the Packets of all runs of each treatment")
+
+packetData# includes median of packets for all OL
+
+#find minimum and maxium of packets for each OL
+min(level0PacketsAllRuns)
+min(level1PacketsAllRuns)
+min(level2PacketsAllRuns)
+min(level3PacketsAllRuns)
+
+max(level0PacketsAllRuns)
+max(level1PacketsAllRuns)
+max(level2PacketsAllRuns)
+max(level3PacketsAllRuns)
+
+#average of packets for each OL
+mean(level0PacketsAllRuns)
+mean(level1PacketsAllRuns)
+mean(level2PacketsAllRuns)
+mean(level3PacketsAllRuns)
+
+#standard deviation of packets for each OL
+sd(level0PacketsAllRuns)
+sd(level1PacketsAllRuns)
+sd(level2PacketsAllRuns)
+sd(level3PacketsAllRuns)
+
+#Coefficient of variation of packets of each OL
+cv(level0PacketsAllRuns)
+cv(level1PacketsAllRuns)
+cv(level2PacketsAllRuns)
+cv(level3PacketsAllRuns)
 
 #-----------------------
 
@@ -180,5 +390,36 @@ level3BytesAllRuns <- c(level3Bytes$Run.1, level3Bytes$Run.2, level3Bytes$Run.3,
 
 
 #vioplot for total average of Bytes time for all treatments
-vioplot(level0BytesAllRuns/1024, level1BytesAllRuns/1024, level2BytesAllRuns/1024, level3BytesAllRuns/1024, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "Number of KiloBytes Transferred(KB)", main = "Vioplot for the KiloBytes Transferred of all runs of each treatment")
-#The values are converted to MB to have smaller values
+byteData = vioplot(level0BytesAllRuns/1024, level1BytesAllRuns/1024, level2BytesAllRuns/1024, level3BytesAllRuns/1024, names = c("OL0", "OL1", "OL2", "OL3"), xlab = "Treatment Type", ylab = "Number of KiloBytes Transferred(KB)", main = "Vioplot for the KiloBytes Transferred of all runs of each treatment")
+#The values are converted to KB to have smaller values
+
+byteData# includes median of bytes for all OL
+
+#find minimum and maxium of bytes for each OL
+min(level0BytesAllRuns/1024)
+min(level1BytesAllRuns/1024)
+min(level2BytesAllRuns/1024)
+min(level3BytesAllRuns/1024)
+
+max(level0BytesAllRuns/1024)
+max(level1BytesAllRuns/1024)
+max(level2BytesAllRuns/1024)
+max(level3BytesAllRuns/1024)
+
+#average of bytes for each OL
+mean(level0BytesAllRuns/1024)
+mean(level1BytesAllRuns/1024)
+mean(level2BytesAllRuns/1024)
+mean(level3BytesAllRuns/1024)
+
+#standard deviation of bytes for each OL
+sd(level0BytesAllRuns/1024)
+sd(level1BytesAllRuns/1024)
+sd(level2BytesAllRuns/1024)
+sd(level3BytesAllRuns/1024)
+
+#Coefficient of variation of bytes of each OL
+cv(level0BytesAllRuns/1024)
+cv(level1BytesAllRuns/1024)
+cv(level2BytesAllRuns/1024)
+cv(level3BytesAllRuns/1024)
