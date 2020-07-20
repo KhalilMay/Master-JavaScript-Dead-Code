@@ -36,14 +36,24 @@ resultEnergy = aov(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Leve
 
 summary(resultEnergy)
 
+qqnorm(level0EnergyTest$EnergyAll, main="Normal Q-Q Plot of OL0 energy consumption ")
+qqline(level0EnergyTest$EnergyAll)
 
-plot(resultEnergy,2) #QQPlot to check data across the normal line (normality check)
+qqnorm(level1EnergyTest$EnergyAll, main="Normal Q-Q Plot of OL1 energy consumption ")
+qqline(level1EnergyTest$EnergyAll)
 
-plot(resultEnergy, 1)#Residual vs Fitted plot to check if the variance is homogenous
+qqnorm(level2EnergyTest$EnergyAll, main="Normal Q-Q Plot of OL2 energy consumption ")
+qqline(level2EnergyTest$EnergyAll)
+
+qqnorm(level3EnergyTest$EnergyAll, main="Normal Q-Q Plot of OL3 energy consumption ")
+qqline(level3EnergyTest$EnergyAll)
 
 
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
-shapiro.test(residuals(object = resultEnergy)) #normality variance check
+shapiro.test(level0EnergyTest$EnergyAll)
+shapiro.test(level1EnergyTest$EnergyAll)
+shapiro.test(level2EnergyTest$EnergyAll)
+shapiro.test(level3EnergyTest$EnergyAll)
 
 kruskal.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #nonparamatric test instead of anova
 
@@ -81,15 +91,29 @@ experimentLoading = rbind(level0LoadingTest, level1LoadingTest, level2LoadingTes
 experimentLoading$Optimization.Level = as.factor(experimentLoading$Optimization.Level)
 #experimentLoading$Webpage = as.factor(experimentLoading$Webpage)
 
-#run test for Loading and show summary
+#run test for Loading and show summary aov
 resultLoading = aov(experimentLoading$LoadingAll~experimentLoading$Optimization.Level)
 
 summary(resultLoading)
 
-plot(resultLoading,2)
+#QQPLOTS for normality
+qqnorm(level0LoadingTest$LoadingAll, main="Normal Q-Q Plot of OL0 loading time ")
+qqline(level0LoadingTest$LoadingAll)
+
+qqnorm(level1LoadingTest$LoadingAll, main="Normal Q-Q Plot of OL1 loading time ")
+qqline(level1LoadingTest$LoadingAll)
+
+qqnorm(level2LoadingTest$LoadingAll, main="Normal Q-Q Plot of OL2 loading time ")
+qqline(level2LoadingTest$LoadingAll)
+
+qqnorm(level3LoadingTest$LoadingAll, main="Normal Q-Q Plot of OL3 loading time")
+qqline(level3LoadingTest$LoadingAll)
 
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
-shapiro.test(residuals(object = resultLoading)) #normality variance check
+shapiro.test(level0LoadingTest$LoadingAll)
+shapiro.test(level1LoadingTest$LoadingAll)
+shapiro.test(level2LoadingTest$LoadingAll)
+shapiro.test(level3LoadingTest$LoadingAll)
 
 kruskal.test(experimentLoading$LoadingAll~experimentLoading$Optimization.Level) #nonparamatric test instead of anova
 
@@ -126,10 +150,25 @@ resultCPU = aov(experimentCPU$CPUAll~experimentCPU$Optimization.Level)
 
 summary(resultCPU)
 
-plot(resultCPU,1)
+#QQPLOTS for normality
+qqnorm(level0CPUTest$CPUAll, main="Normal Q-Q Plot of OL0 CPU usage ")
+qqline(level0CPUTest$CPUAll)
+
+qqnorm(level1CPUTest$CPUAll, main="Normal Q-Q Plot of OL1 CPU usage ")
+qqline(level1CPUTest$CPUAll)
+
+qqnorm(level2CPUTest$CPUAll, main="Normal Q-Q Plot of OL2 CPU usage ")
+qqline(level2CPUTest$CPUAll)
+
+qqnorm(level3CPUTest$CPUAll, main="Normal Q-Q Plot of OL3 CPU usage")
+qqline(level3CPUTest$CPUAll)
+
 
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
-shapiro.test(residuals(object = resultCPU)) #normality variance check
+shapiro.test(level0CPUTest$CPUAll)
+shapiro.test(level1CPUTest$CPUAll)
+shapiro.test(level2CPUTest$CPUAll)
+shapiro.test(level3CPUTest$CPUAll)
 
 kruskal.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
@@ -166,11 +205,24 @@ resultMemory = aov(experimentMemory$MemoryAll~experimentMemory$Optimization.Leve
 
 summary(resultMemory)
 
-plot(resultMemory,1)
-plot(resultMemory,2)
+#QQPLOTS for normality
+qqnorm(level0MemoryTest$MemoryAll/1024, main="Normal Q-Q Plot of OL0 memory consumption ")
+qqline(level0MemoryTest$MemoryAll/1024)
 
-#Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
-shapiro.test(residuals(object = resultMemory)) #normality variance check
+qqnorm(level1MemoryTest$MemoryAll/1024, main="Normal Q-Q Plot of OL1 memory consumption ")
+qqline(level1MemoryTest$MemoryAll/1024)
+
+qqnorm(level2MemoryTest$MemoryAll/1024, main="Normal Q-Q Plot of OL2 memory consumption ")
+qqline(level2MemoryTest$MemoryAll/1024)
+
+qqnorm(level3MemoryTest$MemoryAll/1024, main="Normal Q-Q Plot of OL3 memory consumption")
+qqline(level3MemoryTest$MemoryAll/1024)
+
+#Check for AVONA Assumptions, shapiro test for normality check
+shapiro.test(level0MemoryTest$MemoryAll)
+shapiro.test(level1MemoryTest$MemoryAll)
+shapiro.test(level2MemoryTest$MemoryAll)
+shapiro.test(level3MemoryTest$MemoryAll)
 
 kruskal.test(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
@@ -206,12 +258,25 @@ resultFP = aov(experimentFP$FPAll~experimentFP$Optimization.Level)
 
 summary(resultFP)
 
-plot(resultFP,1)
-plot(resultFP,2)
+#QQPLOTS for normality
+qqnorm(level0FPTest$FPAll, main="Normal Q-Q Plot of OL0 FP ")
+qqline(level0FPTest$FPAll)
+
+qqnorm(level1FPTest$FPAll, main="Normal Q-Q Plot of OL1 FP ")
+qqline(level1FPTest$FPAll)
+
+qqnorm(level2FPTest$FPAll, main="Normal Q-Q Plot of OL2 FP ")
+qqline(level2FPTest$FPAll)
+
+qqnorm(level3FPTest$FPAll, main="Normal Q-Q Plot of OL3 FP")
+qqline(level3FPTest$FPAll)
 
 
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
-shapiro.test(residuals(object = resultFP)) #normality variance check
+shapiro.test(level0FPTest$FPAll)
+shapiro.test(level1FPTest$FPAll)
+shapiro.test(level2FPTest$FPAll)
+shapiro.test(level3FPTest$FPAll)
 
 kruskal.test(experimentFP$FPAll~experimentFP$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
@@ -246,11 +311,26 @@ resultFCP = aov(experimentFCP$FCPAll~experimentFCP$Optimization.Level)
 
 summary(resultFCP)
 
-plot(resultFCP,1)
-plot(resultFCP,2)
+
+#QQPLOTS for normality
+qqnorm(level0FCPTest$FCPAll, main="Normal Q-Q Plot of OL0 FCP ")
+qqline(level0FCPTest$FCPAll)
+
+qqnorm(level1FCPTest$FCPAll, main="Normal Q-Q Plot of OL1 FCP ")
+qqline(level1FCPTest$FCPAll)
+
+qqnorm(level2FCPTest$FCPAll, main="Normal Q-Q Plot of OL2 FCP ")
+qqline(level2FCPTest$FCPAll)
+
+qqnorm(level3FCPTest$FCPAll, main="Normal Q-Q Plot of OL3 FCP")
+qqline(level3FCPTest$FCPAll)
+
 
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
-shapiro.test(residuals(object = resultFCP)) #normality variance check
+shapiro.test(level0FCPTest$FCPAll)
+shapiro.test(level1FCPTest$FCPAll)
+shapiro.test(level2FCPTest$FCPAll)
+shapiro.test(level3FCPTest$FCPAll)
 
 kruskal.test(experimentFCP$FCPAll~experimentFCP$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
@@ -285,11 +365,24 @@ resultPackets = aov(experimentPackets$PacketsAll~experimentPackets$Optimization.
 
 summary(resultPackets)
 
-plot(resultPackets,1)
-plot(resultPackets,2)
+#QQPLOTS for normality
+qqnorm(level0PacketsTest$PacketsAll, main="Normal Q-Q Plot of OL0 packets transferred ")
+qqline(level0PacketsTest$PacketsAll)
+
+qqnorm(level1PacketsTest$PacketsAll, main="Normal Q-Q Plot of OL1 packets transferred ")
+qqline(level1PacketsTest$PacketsAll)
+
+qqnorm(level2PacketsTest$PacketsAll, main="Normal Q-Q Plot of OL2 packets transferred ")
+qqline(level2PacketsTest$PacketsAll)
+
+qqnorm(level3PacketsTest$PacketsAll, main="Normal Q-Q Plot of OL3 packets transferred")
+qqline(level3PacketsTest$PacketsAll)
 
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
-shapiro.test(residuals(object = resultPackets)) #normality variance check
+shapiro.test(level0PacketsTest$PacketsAll)
+shapiro.test(level1PacketsTest$PacketsAll)
+shapiro.test(level2PacketsTest$PacketsAll)
+shapiro.test(level3PacketsTest$PacketsAll)
 
 kruskal.test(experimentPackets$PacketsAll~experimentPackets$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
@@ -324,11 +417,24 @@ resultBytes = aov(experimentBytes$BytesAll~experimentBytes$Optimization.Level)
 
 summary(resultBytes)
 
-plot(resultBytes,1)
-plot(resultBytes,2)
+#QQPLOTS for normality
+qqnorm(level0BytesTest$BytesAll/1024, main="Normal Q-Q Plot of OL0 bytes transferred ")
+qqline(level0BytesTest$BytesAll/1024)
+
+qqnorm(level1BytesTest$BytesAll/1024, main="Normal Q-Q Plot of OL1 bytes transferred ")
+qqline(level1BytesTest$BytesAll/1024)
+
+qqnorm(level2BytesTest$BytesAll/1024, main="Normal Q-Q Plot of OL2 bytes transferred ")
+qqline(level2BytesTest$BytesAll/1024)
+
+qqnorm(level3BytesTest$BytesAll/1024, main="Normal Q-Q Plot of OL3 bytes transferred")
+qqline(level3BytesTest$BytesAll/1024)
 
 #Check for AVONA Assumptions using a Levene's Test for homogeneity of the variance and a test for normality check
-shapiro.test(residuals(object = resultBytes)) #normality variance check
+shapiro.test(level0BytesTest$BytesAll)
+shapiro.test(level1BytesTest$BytesAll)
+shapiro.test(level2BytesTest$BytesAll)
+shapiro.test(level3BytesTest$BytesAll)
 
 kruskal.test(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
