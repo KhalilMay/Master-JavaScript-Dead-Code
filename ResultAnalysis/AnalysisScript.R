@@ -1,5 +1,7 @@
 library(dplyr) #may need an installation first
 library(car) #may need an installation first
+library(dunn.test)#may need an installation first
+
 
 #Data for Energy Consumption of the experiments
 level0Energy = read.csv(file="../Aggregate_Metrics/level0_Results_Energy.csv", header=TRUE, sep=",")
@@ -58,6 +60,8 @@ shapiro.test(level3EnergyTest$EnergyAll)
 kruskal.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #nonparamatric test instead of anova
 
 leveneTest(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #homogenous variance check
+
+dunn.test(experimentEnergy$EnergyAll, g=experimentEnergy$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
 
 pairwise.wilcox.test(experimentEnergy$EnergyAll , experimentEnergy$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #---------------------------------------------------------------------------------------------------
@@ -119,6 +123,8 @@ kruskal.test(experimentLoading$LoadingAll~experimentLoading$Optimization.Level) 
 
 leveneTest(experimentLoading$LoadingAll~experimentLoading$Optimization.Level) #homogenous variance check
 
+dunn.test(experimentLoading$LoadingAll, g=experimentLoading$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
+
 pairwise.wilcox.test(experimentLoading$LoadingAll , experimentLoading$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 
 #--------------------------------------------------------------------------------------------------------------------------
@@ -176,6 +182,8 @@ leveneTest(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #homogenous va
 
 oneway.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #Used if variance is not homogenous
 
+dunn.test(experimentCPU$CPUAll, g=experimentCPU$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
+
 pairwise.wilcox.test(experimentCPU$CPUAll , experimentCPU$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -227,6 +235,8 @@ shapiro.test(level3MemoryTest$MemoryAll)
 kruskal.test(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
 leveneTest(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #homogenous variance check
+
+dunn.test(experimentMemory$MemoryAll, g=experimentMemory$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
 
 pairwise.wilcox.test(experimentMemory$MemoryAll , experimentMemory$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 
@@ -282,6 +292,8 @@ kruskal.test(experimentFP$FPAll~experimentFP$Optimization.Level) #nonparamatric 
 
 leveneTest(experimentFP$FPAll~experimentFP$Optimization.Level) #homogenous variance check
 
+dunn.test(experimentFP$FPAll, g=experimentFP$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
+
 pairwise.wilcox.test(experimentFP$FPAll , experimentFP$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -336,6 +348,8 @@ kruskal.test(experimentFCP$FCPAll~experimentFCP$Optimization.Level) #nonparamatr
 
 leveneTest(experimentFCP$FCPAll~experimentFCP$Optimization.Level) #homogenous variance check
 
+dunn.test(experimentFCP$FCPAll, g=experimentFCP$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
+
 pairwise.wilcox.test(experimentFCP$FCPAll , experimentFCP$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
@@ -387,6 +401,8 @@ shapiro.test(level3PacketsTest$PacketsAll)
 kruskal.test(experimentPackets$PacketsAll~experimentPackets$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
 leveneTest(experimentPackets$PacketsAll~experimentPackets$Optimization.Level) #homogenous variance check
+
+dunn.test(experimentPackets$PacketsAll, g=experimentPackets$Optimization.Level, method = "bonferroni")
 
 pairwise.wilcox.test(experimentPackets$PacketsAll , experimentPackets$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
@@ -442,4 +458,6 @@ leveneTest(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #homogen
 
 oneway.test(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #Used if variance is not homogenous
 
-pairwise.wilcox.test(experimentBytes$BytesAll , experimentBytes$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
+dunn.test(experimentBytes$BytesAll, g=experimentBytes$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
+
+pairwise.wilcox.test(experimentBytes$BytesAll , experimentBytes$Optimization.Level, p.adjust.method = "holm")
