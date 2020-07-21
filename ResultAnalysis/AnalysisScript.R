@@ -34,9 +34,9 @@ experimentEnergy$Optimization.Level = as.factor(experimentEnergy$Optimization.Le
 
 
 #run test for energy consumption and show summary
-resultEnergy = aov(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)
+#resultEnergy = aov(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level)
 
-summary(resultEnergy)
+#summary(resultEnergy)
 
 qqnorm(level0EnergyTest$EnergyAll, main="Normal Q-Q Plot of OL0 energy consumption ")
 qqline(level0EnergyTest$EnergyAll)
@@ -59,11 +59,11 @@ shapiro.test(level3EnergyTest$EnergyAll)
 
 kruskal.test(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #nonparamatric test instead of anova
 
-leveneTest(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #homogenous variance check
+#leveneTest(experimentEnergy$EnergyAll~experimentEnergy$Optimization.Level) #homogenous variance check
 
 dunn.test(experimentEnergy$EnergyAll, g=experimentEnergy$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
 
-pairwise.wilcox.test(experimentEnergy$EnergyAll , experimentEnergy$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
+#pairwise.wilcox.test(experimentEnergy$EnergyAll , experimentEnergy$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #---------------------------------------------------------------------------------------------------
 
 #Data for Loading Times of the experiments
@@ -95,11 +95,6 @@ experimentLoading = rbind(level0LoadingTest, level1LoadingTest, level2LoadingTes
 experimentLoading$Optimization.Level = as.factor(experimentLoading$Optimization.Level)
 #experimentLoading$Webpage = as.factor(experimentLoading$Webpage)
 
-#run test for Loading and show summary aov
-resultLoading = aov(experimentLoading$LoadingAll~experimentLoading$Optimization.Level)
-
-summary(resultLoading)
-
 #QQPLOTS for normality
 qqnorm(level0LoadingTest$LoadingAll, main="Normal Q-Q Plot of OL0 loading time ")
 qqline(level0LoadingTest$LoadingAll)
@@ -121,12 +116,7 @@ shapiro.test(level3LoadingTest$LoadingAll)
 
 kruskal.test(experimentLoading$LoadingAll~experimentLoading$Optimization.Level) #nonparamatric test instead of anova
 
-leveneTest(experimentLoading$LoadingAll~experimentLoading$Optimization.Level) #homogenous variance check
-
 dunn.test(experimentLoading$LoadingAll, g=experimentLoading$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
-
-pairwise.wilcox.test(experimentLoading$LoadingAll , experimentLoading$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
-
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for CPU of the experiments
@@ -151,11 +141,6 @@ experimentCPU = rbind(level0CPUTest, level1CPUTest, level2CPUTest, level3CPUTest
 #make treatment and webpage columns as a factor to help with the test
 experimentCPU$Optimization.Level = as.factor(experimentCPU$Optimization.Level)
 
-#run test for energy consumption and show summary
-resultCPU = aov(experimentCPU$CPUAll~experimentCPU$Optimization.Level)
-
-summary(resultCPU)
-
 #QQPLOTS for normality
 qqnorm(level0CPUTest$CPUAll, main="Normal Q-Q Plot of OL0 CPU usage ")
 qqline(level0CPUTest$CPUAll)
@@ -178,13 +163,8 @@ shapiro.test(level3CPUTest$CPUAll)
 
 kruskal.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
-leveneTest(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #homogenous variance check
-
-oneway.test(experimentCPU$CPUAll~experimentCPU$Optimization.Level) #Used if variance is not homogenous
-
 dunn.test(experimentCPU$CPUAll, g=experimentCPU$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
 
-pairwise.wilcox.test(experimentCPU$CPUAll , experimentCPU$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for Memory of the experiments
@@ -208,11 +188,6 @@ experimentMemory = rbind(level0MemoryTest, level1MemoryTest, level2MemoryTest, l
 #make treatment and webpage columns as a factor to help with the test
 experimentMemory$Optimization.Level = as.factor(experimentMemory$Optimization.Level)
 
-#run test for energy consumption and show summary
-resultMemory = aov(experimentMemory$MemoryAll~experimentMemory$Optimization.Level)
-
-summary(resultMemory)
-
 #QQPLOTS for normality
 qqnorm(level0MemoryTest$MemoryAll/1024, main="Normal Q-Q Plot of OL0 memory consumption ")
 qqline(level0MemoryTest$MemoryAll/1024)
@@ -234,12 +209,7 @@ shapiro.test(level3MemoryTest$MemoryAll)
 
 kruskal.test(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
-leveneTest(experimentMemory$MemoryAll~experimentMemory$Optimization.Level) #homogenous variance check
-
 dunn.test(experimentMemory$MemoryAll, g=experimentMemory$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
-
-pairwise.wilcox.test(experimentMemory$MemoryAll , experimentMemory$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
-
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for FP of the experiments
@@ -263,11 +233,6 @@ experimentFP = rbind(level0FPTest, level1FPTest, level2FPTest, level3FPTest)
 #make treatment and webpage columns as a factor to help with the test
 experimentFP$Optimization.Level = as.factor(experimentFP$Optimization.Level)
 
-#run test for energy consumption and show summary
-resultFP = aov(experimentFP$FPAll~experimentFP$Optimization.Level)
-
-summary(resultFP)
-
 #QQPLOTS for normality
 qqnorm(level0FPTest$FPAll, main="Normal Q-Q Plot of OL0 FP ")
 qqline(level0FPTest$FPAll)
@@ -290,11 +255,7 @@ shapiro.test(level3FPTest$FPAll)
 
 kruskal.test(experimentFP$FPAll~experimentFP$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
-leveneTest(experimentFP$FPAll~experimentFP$Optimization.Level) #homogenous variance check
-
 dunn.test(experimentFP$FPAll, g=experimentFP$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
-
-pairwise.wilcox.test(experimentFP$FPAll , experimentFP$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for FCP of the experiments
@@ -318,12 +279,6 @@ experimentFCP = rbind(level0FCPTest, level1FCPTest, level2FCPTest, level3FCPTest
 #make treatment and webpage columns as a factor to help with the test
 experimentFCP$Optimization.Level = as.factor(experimentFCP$Optimization.Level)
 
-#run test for energy consumption and show summary
-resultFCP = aov(experimentFCP$FCPAll~experimentFCP$Optimization.Level)
-
-summary(resultFCP)
-
-
 #QQPLOTS for normality
 qqnorm(level0FCPTest$FCPAll, main="Normal Q-Q Plot of OL0 FCP ")
 qqline(level0FCPTest$FCPAll)
@@ -346,11 +301,8 @@ shapiro.test(level3FCPTest$FCPAll)
 
 kruskal.test(experimentFCP$FCPAll~experimentFCP$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
-leveneTest(experimentFCP$FCPAll~experimentFCP$Optimization.Level) #homogenous variance check
-
 dunn.test(experimentFCP$FCPAll, g=experimentFCP$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
 
-pairwise.wilcox.test(experimentFCP$FCPAll , experimentFCP$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for Packets of the experiments
@@ -374,11 +326,6 @@ experimentPackets = rbind(level0PacketsTest, level1PacketsTest, level2PacketsTes
 #make treatment and webpage columns as a factor to help with the test
 experimentPackets$Optimization.Level = as.factor(experimentPackets$Optimization.Level)
 
-#run test for energy consumption and show summary
-resultPackets = aov(experimentPackets$PacketsAll~experimentPackets$Optimization.Level)
-
-summary(resultPackets)
-
 #QQPLOTS for normality
 qqnorm(level0PacketsTest$PacketsAll, main="Normal Q-Q Plot of OL0 packets transferred ")
 qqline(level0PacketsTest$PacketsAll)
@@ -400,11 +347,8 @@ shapiro.test(level3PacketsTest$PacketsAll)
 
 kruskal.test(experimentPackets$PacketsAll~experimentPackets$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
-leveneTest(experimentPackets$PacketsAll~experimentPackets$Optimization.Level) #homogenous variance check
-
 dunn.test(experimentPackets$PacketsAll, g=experimentPackets$Optimization.Level, method = "bonferroni")
 
-pairwise.wilcox.test(experimentPackets$PacketsAll , experimentPackets$Optimization.Level, p.adjust.method = "holm")#pairwise comparision to check the mean difference between the groups
 #--------------------------------------------------------------------------------------------------------------------------
 
 #Data for Bytes transferred of the experiments
@@ -428,11 +372,6 @@ experimentBytes = rbind(level0BytesTest, level1BytesTest, level2BytesTest, level
 #make treatment and webpage columns as a factor to help with the test
 experimentBytes$Optimization.Level = as.factor(experimentBytes$Optimization.Level)
 
-#run test for energy consumption and show summary
-resultBytes = aov(experimentBytes$BytesAll~experimentBytes$Optimization.Level)
-
-summary(resultBytes)
-
 #QQPLOTS for normality
 qqnorm(level0BytesTest$BytesAll/1024, main="Normal Q-Q Plot of OL0 bytes transferred ")
 qqline(level0BytesTest$BytesAll/1024)
@@ -454,10 +393,4 @@ shapiro.test(level3BytesTest$BytesAll)
 
 kruskal.test(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #nonparamatric test instead of anova if normality is violated
 
-leveneTest(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #homogenous variance check
-
-oneway.test(experimentBytes$BytesAll~experimentBytes$Optimization.Level) #Used if variance is not homogenous
-
 dunn.test(experimentBytes$BytesAll, g=experimentBytes$Optimization.Level, method = "bonferroni")#pairwise comparision to check the mean difference between the groups
-
-pairwise.wilcox.test(experimentBytes$BytesAll , experimentBytes$Optimization.Level, p.adjust.method = "holm")
